@@ -2,29 +2,12 @@
   <div class="container">
     <div class="container-texto">
       <p v-if="transcript">{{ transcript }}</p>
-      <div class="container-inicio" v-else>
-        <p>Olá, vamos lá...</p>
-        <img src="/assets/img/falarbrancogrande.png" alt="incio">
-      </div>
     </div>
     <div class="container-botoes">
-      <button @click="startRecording"
-              title="clique aqui para iniciar captura de voz">
-        Iniciar captura
-        <img class="img-botoes" src="/assets/img/falarbranco.png">
-      </button>
-      <button @click="pauseRecording" title="clique aqui para pausa captura">
-        Pause
-        <img class="img-botoes" src="/assets/img/pausabranco.png">
-      </button>
-      <button @click="resumeRecording" title="clique aqui para voltar a captura">
-        Resume
-        <img class="img-botoes" src="/assets/img/continuobranco.png">
-      </button>
-      <button @click="stopRecording" title="clique aqui para apagar texto">
-        Apagar
-        <img class="img-botoes" src="/assets/img/lixobranco.png">
-      </button>
+      <button @click="startRecording">Start Recording</button>
+      <button @click="pauseRecording">Pause</button>
+      <button @click="resumeRecording">Resume</button>
+      <button @click="stopRecording">Stop</button>
     </div>
   </div>
 </template>
@@ -45,15 +28,16 @@ export default {
       this.recognition.continuous = true;
       this.recognition.interimResults = true;
       this.recognition.onresult = event => {
-        let interimTranscript = "capturando audio....";
+        let interimTranscript = "";
         for (let i = event.resultIndex; i < event.results.length; i++) {
           const transcript = event.results[i][0].transcript;
-          if (!event.results[i].isFinal) {
-            interimTranscript;
+          if (event.results[i].isFinal) {
+            this.transcript += transcript;
           } else {
-            this.transcript += ' ' + transcript;
+            interimTranscript += transcript;
           }
         }
+        this.transcript += interimTranscript;
       };
       this.recognition.start();
       this.isRecording = true;
@@ -75,4 +59,55 @@ export default {
 };
 </script>
 <style>
+main, body, html {
+  padding: 0px;
+  margin: 0px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  background: #343541;
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+}
+.container-texto {
+  margin: 10px;
+    height: 400px;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: left;
+    background: #444654;
+    box-shadow: -8px 20px 20px 0px #0000004a;
+    overflow: auto;
+    
+}
+
+.container-texto p {
+  color: #d1d5db;
+}
+
+.container-botoes {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+.container-botoes button {
+    padding: 10px 25px;
+    background: black;
+    color: white;
+    border-radius: 24px;
+    box-shadow: -2px 0px 20px 0px #373737;
+    border: 3px solid #444654;
+}
+.container-botoes button{
+  cursor: pointer;
+}
+.container-botoes button:nth-child(4) {
+  cursor: no-drop;
+}
 </style>
