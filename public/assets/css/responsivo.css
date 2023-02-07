@@ -1,0 +1,12 @@
+@media (max-width: 551px) {
+    .container-botoes {
+        width: 100%;
+        display: flex;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .container-texto {
+        padding: 50px
+    }
+}
