@@ -47,6 +47,12 @@ export default {
   },
   methods: {
     startRecording() {
+      const clicado = document.querySelector('button')
+      const pulsacao = document.querySelector('.container-inicio img')
+      clicado.style.background = 'darkgreen'
+      clicado.style.border = '3px solid darkgreen'
+      pulsacao.style.animation = '1s pulsacao infinite'
+
       this.recognition = new window.webkitSpeechRecognition();
       this.recognition.continuous = true;
       this.recognition.interimResults = true;
@@ -57,6 +63,9 @@ export default {
           if (!event.results[i].isFinal) {
             interimTranscript;
           } else {
+            clicado.style.background = 'black'
+            clicado.style.border = '3px solid #444654'
+            pulsacao.style.animation = 'none'
             this.transcript += ' ' + transcript;
           }
         }

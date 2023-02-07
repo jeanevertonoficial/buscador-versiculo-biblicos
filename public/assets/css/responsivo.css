@@ -4,9 +4,23 @@
         display: flex;
         margin-top: 2rem;
         flex-wrap: wrap;
-        justify-content: space-between;
+        flex-direction: row;
+        justify-content: center;
     }
     .container-texto {
-        padding: 50px
+        padding: 50px;
+        height: 380px;
+    }
+    .div-container {
+        height: initial;
+    }
+    .container-botoes button{
+        padding: 10px 60px;
+    }
+    span.span-copiado {
+        border-radius: 16px 0px 41px 23px;
+        margin-top: 25px;
+        margin-left: -114px;
+        animation: 0.5s copiar;
     }
 }

@@ -136,5 +136,27 @@ img.img-botoes {
         margin-top: 23px;
         opacity: 1;
     }
+}
 
+@keyframes pulsacao {
+    0% {
+        transition: 0.3s;
+        transform: scale(1);
+    }
+    50% {
+        transition: 0.3s;
+        transform: scale(1.1);
+    }
+    60% {
+        transition: 0.3s;
+        transform: scale(1.2);
+    }
+    80% {
+        transition: 0.3s;
+        transform: scale(1.1);
+    }
+    100% {
+        transition: 0.3s;
+        transform: scale(1);
+    }
 }
