@@ -8,11 +8,27 @@ html {
     background: var(--background-padrao-escuro);
 }
 
+.none {
+    display: none !important;
+}
+
+.div-container {
+    display: flex;
+    height: 50rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
 .container {
     max-width: 750px;
+    width: 750px;
     margin: auto;
 }
+
 .container-texto {
+    display: flex;
+    justify-content: space-between;
     margin: 10px;
     height: 400px;
     border-radius: 12px;
@@ -23,12 +39,36 @@ html {
     overflow: auto;
 }
 
+.container-texto .container-texto p {
+    width: 95%;
+    font-size: 18px;
+    color: var(--color-texto-padrao-escuro);
+}
+
 .container-texto p {
     font-size: 18px;
     color: var(--color-texto-padrao-escuro);
 }
 
+.div-copiar-texto {
+    cursor: pointer;
+    float: right;
+    height: 24px;
+}
+
+span.span-copiado {
+    background: #9e9e9e;
+    border-radius: 0 12px 16px 18px;
+    padding: 5px 15px;
+    color: white;
+    box-shadow: 3px 6px 14px 0px #0000005c;
+    position: absolute;
+    margin-top: 23px;
+    animation: 0.5s copiar;
+}
+
 .container-inicio {
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -76,4 +116,25 @@ img.img-botoes {
 }
 .container-botoes button:nth-child(4) {
     cursor: no-drop;
+}
+
+@keyframes copiar {
+    0% {
+        width: 0;
+        margin-top: 0;
+        opacity: 0.2;
+    }
+
+    50% {
+        width: 35px;
+        margin-top: 16px;
+        opacity: 0.5;
+    }
+
+    100% {
+        width: auto;
+        margin-top: 23px;
+        opacity: 1;
+    }
+
 }
