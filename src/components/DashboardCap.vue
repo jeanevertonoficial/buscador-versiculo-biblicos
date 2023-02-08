@@ -42,7 +42,7 @@ export default {
     return {
       transcript: "",
       recognition: null,
-      isRecording: false
+      isRecording: false,
     };
   },
   methods: {
@@ -66,7 +66,7 @@ export default {
             clicado.style.background = 'black'
             clicado.style.border = '3px solid #444654'
             pulsacao.style.animation = 'none'
-            this.transcript += ' ' + transcript;
+            this.transcript += ' ' + transcript + ', ';
           }
         }
       };
@@ -105,5 +105,3 @@ export default {
   }
 };
 </script>
-<style>
-</style>
