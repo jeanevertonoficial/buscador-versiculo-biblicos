@@ -1,4 +1,5 @@
 <template>
+  <historicoFalas :historico_falas="historico"/>
   <div class="div-container">
     <section class="container">
       <div class="container-texto">
@@ -43,6 +44,7 @@ export default {
       transcript: "",
       recognition: null,
       isRecording: false,
+      historico: []
     };
   },
   methods: {
@@ -67,6 +69,9 @@ export default {
             clicado.style.border = '3px solid #444654'
             pulsacao.style.animation = 'none'
             this.transcript += ' ' + transcript + ', ';
+            this.push({
+              historico: this.transcript
+            })
           }
         }
       };
