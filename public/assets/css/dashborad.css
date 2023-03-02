@@ -11,12 +11,26 @@ html {
 .none {
     display: none !important;
 }
-
+.container-box-lateral{
+    height: 100% !important;
+    float: left;
+    width: 281px !important;
+    clear: left;
+    margin-left: 2rem;
+    margin-top: 8rem;
+    overflow: overlay;
+    max-height: 80vh;
+}
 .div-container {
     display: flex;
     height: 50rem;
-    width: 100%;
+    width: auto;
+    justify-content: space-between;
     align-items: center;
+}
+
+.container-base-geral {
+    display: flex;
     justify-content: center;
 }
 
@@ -65,7 +79,6 @@ span.span-copiado {
     padding: 5px 15px;
     color: white;
     box-shadow: 3px 6px 14px 0px #0000005c;
-    position: absolute;
     margin-top: 23px;
     animation: 0.5s copiar;
 }
