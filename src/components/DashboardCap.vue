@@ -65,6 +65,7 @@ export default {
       this.recognition = new window.webkitSpeechRecognition();
       this.recognition.continuous = true;
       this.recognition.interimResults = true;
+      this.recognition.lang = 'pt-BR'
       this.recognition.onresult = event => {
         let interimTranscript = "capturando audio....";
         this.transcript = '';
