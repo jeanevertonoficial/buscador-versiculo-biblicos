@@ -76,7 +76,7 @@ export default {
           } else {
             this.transcript += ' ' + transcript;
             this.historico.push(transcript)
-            localStorage.setItem(this.transcript += transcript, transcript)
+            // localStorage.setItem(this.transcript += transcript, transcript)
           }
         }
       };
