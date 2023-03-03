@@ -1,4 +1,4 @@
-# buscadorbiblia
+# Vamos Falar
 
 ## Project setup
 ```

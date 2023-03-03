@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Jean Everton, desenvolvedor">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description"
+          content="Aplicação detector de falas,
+          está aplicação foi feita para detectar e escrever em tempo real
+          os dialogos, capar de capturar até voz em música.">
+    <meta name="keywords"
+          content="falar e escrever, escrever automáticamente ao falar,
+          reconhecimento de voz, escrever texto, captura falas,
+          captura voz"/>
+    <meta name="rating" content="General">
+    <meta name="expires" content="never">
+    <meta name="language" content="portuguese">
+    <meta name="distribution" content="Global">
+    <meta name="theme-color" content="#2c3e50">
     <link rel="icon" href="<%= BASE_URL %>icon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
-      <link rel="stylesheet" href="assets/css/root.css">
-      <link rel="stylesheet" href="assets/css/dashborad.css">
-      <link rel="stylesheet" href="assets/css/responsivo.css">
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
-  <script type="text/javascript" src="https://pkg.api.bible/fumsV3.min.js">
-  </script>
-  <script>
-      /* This code ensures that FUMS will be reported correctly even if fumsV3.min.js has not finished loading before an attempt is made. */
-      window.fumsData = window.fumsData || [];
-      window.fums = window.fums || function () {
-          window.fumsData.push(arguments);
-      };
-  </script>
+    <link rel="stylesheet" href="assets/css/root.css">
+    <link rel="stylesheet" href="assets/css/dashborad.css">
+    <link rel="stylesheet" href="assets/css/responsivo.css">
+</head>
+<body>
+<noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+</noscript>
+<div id="app"></div>
+<!-- built files will be auto injected -->
+</body>
+<script type="text/javascript" src="https://pkg.api.bible/fumsV3.min.js">
+</script>
+<script>
+    /* This code ensures that FUMS will be reported correctly even if fumsV3.min.js has not finished loading before an attempt is made. */
+    window.fumsData = window.fumsData || [];
+    window.fums = window.fums || function () {
+        window.fumsData.push(arguments);
+    };
+</script>
 </html>

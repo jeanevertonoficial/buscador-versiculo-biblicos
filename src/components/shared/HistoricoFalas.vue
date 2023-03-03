@@ -11,7 +11,7 @@
             <img src="/assets/img/copy.png" :alt="index">
             <span :id="item" class="span-copiado none">Copiado</span>
           </div>
-          <div id="apagar" @click.prevent="delete this.historico_falas[item]">
+          <div id="apagar" @click.prevent="delete this.historico_falas[item], removeDoLocalstoreg(this.historico_falas[item])">
             <img src="/assets/img/lixobranco.png" :alt="index">
           </div>
         </div>
@@ -30,6 +30,9 @@ export default {
   methods: {
     copiarText(e, id) {
       copiarTextoDialogo(e, id)
+    },
+    removeDoLocalstoreg(e){
+      localStorage.removeItem(e)
     }
   }
 }

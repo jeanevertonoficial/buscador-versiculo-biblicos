@@ -14,7 +14,9 @@
           </div>
           <div class="container-inicio" v-else>
             <p>{{ isRecording ? 'Capturando...' : 'Olá, vamos lá...' }}</p>
-            <img src="/assets/img/falarbrancogrande.png" alt="incio">
+
+            <img v-if="isRecording" src="/assets/img/ondas-de-audio.png" class="img-falando" alt="imagem falando">
+            <img v-else src="/assets/img/toquegrande.png" style="border-radius: 33px;" alt="imagem de play">
           </div>
         </div>
         <div class="container-botoes">
@@ -22,20 +24,20 @@
                   :style="!isRecording ? 'capturando audio...' : 'background:darkgreen;'"
                   :title="isRecording ? 'capturando audio...' : 'clique aqui para iniciar captura de voz'">
             {{ isRecording ? 'Capturando...' : 'Iniciar captura' }}
-            <img v-if="isRecording" class="img-botoes" src="/assets/img/falarbranco.png">
-            <img v-else class="img-botoes" src="/assets/img/toque.png">
+            <img v-if="isRecording" class="img-botoes" src="/assets/img/falarbranco.png" alt="imagem falando">
+            <img v-else class="img-botoes" src="/assets/img/toque.png" alt="imagem de play">
           </button>
           <button @click="pauseRecording" title="clique aqui para pausa captura">
             Pause
-            <img class="img-botoes" src="/assets/img/pausabranco.png">
+            <img class="img-botoes" src="/assets/img/pausabranco.png" alt="icone pause">
           </button>
           <button @click="resumeRecording" title="clique aqui para voltar a captura">
             Resume
-            <img class="img-botoes" src="/assets/img/continuobranco.png">
+            <img class="img-botoes" src="/assets/img/continuobranco.png" alt="icone resume">
           </button>
           <button @click="stopRecording" title="clique aqui para apagar texto">
             Apagar
-            <img class="img-botoes" src="/assets/img/lixobranco.png">
+            <img class="img-botoes" src="/assets/img/lixobranco.png" alt="icone excluir">
           </button>
         </div>
       </section>
@@ -44,7 +46,7 @@
 </template>
 
 <script>
-import HistoricoFalas from "@/components/HistoricoFalas";
+import HistoricoFalas from "@/components/shared/HistoricoFalas.vue";
 import copiarTextoDialogo from "@/controller/copiarTextoDialogos"
 
 export default {
@@ -60,10 +62,6 @@ export default {
   },
   methods: {
     startRecording() {
-
-      const clicado = document.querySelector('button')
-      const pulsacao = document.querySelector('.container-inicio img')
-
       this.recognition = new window.webkitSpeechRecognition();
       this.recognition.continuous = true;
       this.recognition.interimResults = true;
@@ -75,9 +73,6 @@ export default {
           if (!event.results[i].isFinal) {
             interimTranscript;
           } else {
-            clicado.style.background = 'black'
-            clicado.style.border = '3px solid #444654'
-            pulsacao.style.animation = 'none'
             this.transcript += ' ' + transcript;
             this.historico.push(transcript)
             localStorage.setItem(this.transcript += transcript, transcript)
@@ -86,20 +81,26 @@ export default {
       };
       this.recognition.start();
       this.isRecording = true;
+      document.title = 'Capturando...'
     },
     pauseRecording() {
       this.recognition.stop();
       this.isRecording = false;
-      this.historico.push(this.transcript)
+      document.title = 'Captura pausada'
     },
     resumeRecording() {
       this.recognition.start();
       this.isRecording = true;
+      document.title = 'Captura Retomada'
     },
     stopRecording() {
       this.recognition.stop();
       this.isRecording = false;
       this.transcript = "";
+      document.title = 'Excluindo capturas...'
+      setTimeout(() => {
+        document.title = 'VamosFalar'
+      }, 3000)
     },
     copiarText() {
       copiarTextoDialogo(this.transcript)

@@ -12,7 +12,7 @@
     }
     .container-texto {
         padding: 50px;
-        height: 380px;
+        height: 350px;
     }
     .div-container {
         height: initial;
@@ -25,5 +25,21 @@
         margin-top: 25px;
         margin-left: -114px;
         animation: 0.5s copiar;
+    }
+    .container-base-geral {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column-reverse;
+    }
+    .container {
+        padding: inherit;
+    }
+    .container-box-lateral{
+        width: auto !important;
+        margin-top: 2rem;
+    }
+    .card-dialogo {
+        max-width: 310px !important;
+        width: 310px !important;
     }
 }
