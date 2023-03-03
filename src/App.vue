@@ -1,6 +1,4 @@
 <template>
-  <main :class="{'modo-claro': modoEscuro}">
-    <DashboardCap/>
     <div class="container-botoes">
       <button @click="mudaTema">
         {{ textoBotao }}
@@ -8,6 +6,8 @@
         <img v-else class="img-botoes" src="/assets/img/lua.png" alt="icone modo-escuro">
       </button>
     </div>
+  <main :class="{'modo-claro': modoEscuro}">
+    <DashboardCap/>
   </main>
 </template>
 
