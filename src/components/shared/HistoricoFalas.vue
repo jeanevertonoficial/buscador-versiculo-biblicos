@@ -1,6 +1,6 @@
 <template>
   <div class="container-box-lateral">
-    <div class="box-falas" v-for="(index, item) in historico_falas" :key="index">
+    <div class="box-falas" v-for="(index, item) in historico_falas.slice().reverse()" :key="index">
       <div class="card-dialogo"
            v-if="index">
         <div class="card-dialogo-texto">
